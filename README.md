@@ -4,6 +4,8 @@ Paper Minecraft Server Docker image
 This is a simple [Paper](https://github.com/PaperMC/Paper) Minecraft Server
 Docker image.
 
+GitHub repository: [https://github.com/OriginalNexus/paper](https://github.com/OriginalNexus/paper)
+
 # Prerequisites
 
 You need `docker` and `docker-compose` available on your system.
