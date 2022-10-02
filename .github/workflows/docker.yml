@@ -1,5 +1,4 @@
 name: docker
-run-name: Docker build and publish triggered by ${{ github.actor }}
 
 on:
   push:
