@@ -2,10 +2,12 @@ version: '3'
 services:
   paper:
     container_name: paper
-    build: .
+    image: rneacsu/paper
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - JAVA_OPTS=${JAVA_OPTS}
+      - PAPER_OPTS=${PAPER_OPTS}
     volumes:
       - ${ROOT}:/paper
     ports:

@@ -8,12 +8,14 @@ Docker image.
 
 You need `docker` and `docker-compose` available on your system.
 
-# Setup
+# Config
 
 Modify the `.env` file accordingly:
- * `PUID` - User id used to run the server. Should match host user id.
- * `PGID` - Group id used to run the server. Should match host group id.
- * `ROOT` - Path to a host directory where to mount the server files.
+ * `ROOT` - Path to a host directory where to mount the server files. Default `./data`.
+ * `PUID` - User id used to run the server, should match host user id. Default `1000`.
+ * `PGID` - Group id used to run the server, should match host group id. Default `1000`.
+ * `JAVA_OPTS` - Java options. Default `-Xms2G -Xmx2G`.
+ * `PAPER_OPTS` - Paper options. Default `--nogui`.
 
 # Usage
 
@@ -25,6 +27,13 @@ Use the provided `docker-compose.yml` file and run:
 docker-compose up -d
 ```
 
+## Stop
+To stop the server, run:
+
+```shell
+docker-compose stop
+```
+
 ## Attach
 
 To interact with the server and issue commands, run:
@@ -32,7 +41,7 @@ To interact with the server and issue commands, run:
 docker attach paper
 ```
 
-Exit using `Ctrl-P Ctrl-Q`
+Detach using `Ctrl-P Ctrl-Q`
 
 # Update
 
@@ -42,12 +51,11 @@ docker-compose pull
 docker-compose up -d
 ```
 
-To use a specific version, modify the image tag inside `docker-compose.yml`
+To use a specific version, add the image tag inside `docker-compose.yml`:
 
-# Config
-
-The following environment variables can be changed:
- * `PUID` - User id used to run the server. Default `1000`.
- * `PGID` - Group id used to run the server. Default `1000`.
- * `JAVA_OPTS` - Java options. Default `-Xms2G -Xmx2G`.
- * `PAPER_OPTS` - Paper options. Default `--nogui`.
+```yaml
+services:
+  paper:
+    container_name: paper
+    image: rneacsu/paper:1.19.2 # <-- Here
+```
